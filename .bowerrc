@@ -1,0 +1,6 @@
+{
+  "directory": "src/assets/js",
+  "scripts": {
+    "postinstall": "gulp wiredep"
+  }
+}

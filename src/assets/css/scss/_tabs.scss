@@ -1,0 +1,102 @@
+.cc-tabs {
+	/*centering*/
+	@include clearfix;
+	box-sizing: border-box;
+}
+
+.cc-tabs > i {
+	float: left;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	line-height: 50px;
+	text-align: center;
+	color: #62717a;
+	position: relative;
+}
+
+.cc-tabs a {
+	text-decoration: none;
+	outline: none;
+	display: block;
+	float: left;
+	line-height: 50px;
+	color: #62717a;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 15px;
+	position: relative;
+	border-left: 1px solid #F6F7F8;
+	border-right: 1px solid #F6F7F8;
+}
+
+.cc-tabs a > i {
+	margin-right: 10px;
+}
+
+.cc-tabs a:hover > span {
+	/*position: relative;
+	&:after {
+		background-color: #F6F7F8;
+		width: 34px;
+		height: 34px;
+		position: absolute;
+		left: -37px;
+		top: -8px;
+	  font: normal normal normal 14px/1 FontAwesome;
+	  text-rendering: auto;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+		content: "\f00d";
+		text-align: center;
+		line-height: 32px;
+	}*/
+}
+
+.cc-tabs a.cc-active:hover > span {
+	&:after {
+		background-color: #fff;
+	}
+}
+
+/*hover/active styles*/
+
+.cc-tabs a.cc-active:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1px;
+  right: -1px;
+  height: 5px;
+  background-color: #3399FF;
+}
+
+.cc-tabs > i:after,
+.cc-tabs a:after {
+  content: "";
+	display: inline-block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -1px;
+  width: 1px;
+  background-color: #E3E8ED;
+}
+
+.cc-tabs a:first-child:after,
+.cc-tabs a.cc-active:after,
+.cc-tabs a.cc-active+a:after,
+.cc-tabs a.cc-active+i:after {
+	display: none;
+}
+
+.cc-tabs a:hover {
+	color: #000;
+}
+
+.cc-tabs a.cc-active {
+	/*color: #3498DB;*/
+	background: #fff;
+	z-index: 1;
+	border-left: 1px solid #E3E8ED;
+	border-right: 1px solid #E3E8ED;
+}

@@ -1,0 +1,102 @@
+.cc-path {
+	/*centering*/
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 8px 0 0 15px;
+}
+
+.cc-path > i {
+	float: left;
+	width: 34px;
+	height: 34px;
+	display: inline-block;;
+	line-height: 34px;
+	text-align: center;
+	margin-left: 22px;
+	margin-top: 8px;
+	color: #5F676F;
+}
+
+.cc-path a {
+	text-decoration: none;
+	outline: none;
+	display: block;
+	float: left;
+	line-height: 36px;
+	color: #62717a;
+	/*need more margin on the left of links to accomodate the numbers*/
+	padding: 0 8px 0 30px;
+	background: #F7F8F9;
+	position: relative;
+}
+
+.cc-path a > i {
+	margin-right: 0px;
+}
+
+.cc-path a > span {
+	position: relative;
+	&:after {
+		display: inline-block;
+	  font: normal normal normal 14px/1 FontAwesome;
+	  font-size: inherit;
+	  text-rendering: auto;
+		margin-left: 15px;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+		content: "\f00d";
+	}
+}
+
+/*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+.cc-path a:first-child {
+	padding-left: 15px;
+	border-radius: 5px 0 0 5px; /*to match with the parent's radius*/
+}
+.cc-path a:first-child:before {
+	left: 14px;
+}
+.cc-path a:last-child {
+	border-radius: 0 5px 5px 0; /*this was to prevent glitches on hover*/
+	padding-right: 15px;
+}
+
+/*hover/active styles*/
+.cc-path a.active, .cc-path a:hover{
+	background: #E5E9ED;
+}
+.cc-path a.active:after, .cc-path a:hover:after {
+	background: #E5E9ED;
+}
+
+/*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+.cc-path a:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -18px; /*half of square's length*/
+	/*same dimension as the line-height of .cc-path a */
+	width: 36px;
+	height: 36px;
+	/*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's:
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+	transform: scale(0.707) rotate(45deg);
+	/*we need to prevent the arrows from getting buried under the next link*/
+	z-index: 1;
+	/*background same as links but the gradient will be rotated to compensate with the transform applied*/
+	background: #F7F8F9;
+	/*stylish arrow design using box shadow*/
+	box-shadow:
+		2px -2px 0 2px #fff,
+		3px -3px 0 2px #fff;
+	/*
+		5px - for rounded arrows and
+		50px - to prevent hover glitches on the border created using shadows*/
+	border-radius: 0 5px 0 50px;
+}
+/*we dont need an arrow after the last link*/
+.cc-path a:last-child:after {
+	content: none;
+}
+/*we will use the :before element to show numbers*/

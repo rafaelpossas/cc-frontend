@@ -1,0 +1,62 @@
+#bg-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  background-color: #333;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url(../img/authentication/lp-bg.jpg);
+  z-index: -1; }
+
+.login .cls-content {
+  padding: 4vh 15px 15px;
+  position: relative;
+  margin: auto; }
+
+.login .cls-content .cls-content-sm {
+  color: #515151;
+  width: 70%;
+  min-width: 270px;
+  margin: auto;
+  position: relative; }
+
+.login .panel-body {
+  padding: 25px 20px; }
+
+.login h3 {
+  text-transform: uppercase;
+  margin-top: -7px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: bold; }
+
+.login a {
+  font-size: 12px; }
+
+.login .checkbox label {
+  padding-left: 0px; }
+
+.login .checkbox input[type="checkbox"] {
+  margin: 3px 0 0 5px; }
+
+.login .logo-container {
+  text-align: center;
+  padding: 15vh 15px 15px; }
+
+.login .pointer {
+  cursor: pointer; }
+
+.login .label-danger {
+  padding: 10px;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto; }
+
+@media (min-width: 768px) {
+  .cls-content-sm {
+    width: 350px !important; } }

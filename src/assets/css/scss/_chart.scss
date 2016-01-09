@@ -1,0 +1,28 @@
+.cc-chart-config-item {
+  @include clearfix;
+  table-layout: fixed;
+  height: 34px;
+  display: table;
+  padding: 0 15px;
+  margin: 5px 0;
+  width: 100%;
+  > .cc-chart-config-item-text,
+    .cc-chart-config-item-ctrl {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+    &.cc-fill {
+      width: 100%;
+    }
+  }
+  > .cc-chart-config-item-text {
+    color: #62717a;
+    text-align: left;
+  }
+  > .cc-chart-config-item-ctrl {
+    text-align: right;
+    > * {
+      float: right;
+    }
+  }
+}

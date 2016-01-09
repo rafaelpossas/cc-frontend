@@ -1,0 +1,30 @@
+.cc-toolbar {
+  box-sizing: border-box;
+  height: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 8px 15px 0 0;
+  li {
+    display: inline-block;
+    padding-left: 2px;
+    text-align: center;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  &.cc-flat {
+    padding: 0;
+    li {
+      padding-left: 0;
+    }
+  }
+  .cc-table & {
+    padding: 0;
+    height: 34px;
+    text-align: center;
+  }
+}
+
+.cc-chart-options .cc-header .cc-toolbar {
+  padding-left: 15px;
+}

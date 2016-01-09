@@ -1,0 +1,50 @@
+.cc-system-bar {
+  background: #24292C;
+  border: 0;
+  color: #000;
+  display: table;
+  height: 50px;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  table-layout: fixed;
+  top: 0;
+  width: 50px;
+  z-index: 0;
+  .cc-menu-active & {
+    width: 200px;
+  }
+  > div {
+    color: #fff;
+    display: table-cell;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+  }
+  a, i {
+    color: #fff;
+  }
+  .cc-product-name {
+    display: none;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .cc-menu-active & .cc-product-name {
+    display: table-cell;
+  }
+
+  .cc-menu,
+  .cc-search,
+  .cc-language,
+  .cc-user {
+    width: 50px;
+  }
+  .cc-logo {
+    text-align: left;
+    width: 75px;
+    img {
+      max-width: 60px;
+    }
+  }
+}

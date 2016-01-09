@@ -1,0 +1,87 @@
+.cc-button {
+  background: #fcfcfc;
+  background: linear-gradient(to bottom, #fcfcfc, #ededed);
+  border: solid #dbdbdb 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px #c4c4c4;
+  box-sizing: border-box;
+  color: black;
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  min-width: 40px;
+  padding: 0 8px;
+  text-align: center;
+  text-decoration: none;
+  &:active,
+  &:hover,
+  &:visited {
+    color: black;
+  }
+  &:active {
+    background: #ededed;
+    background: linear-gradient(to bottom, #ededed, #fcfcfc);
+    color: #3399FF;
+  }
+  &.cc-disabled,
+  &:disabled {
+    background: #f6f6f6;
+    border: solid #e3e3e3 0;
+    box-shadow: 0 1px 1px #e3e3e3;
+    color: #B2B7B7;
+    cursor: default;
+  }
+  i:nth-child(1),
+  i:nth-child(3),
+  .cc-text:nth-child(1) {
+    margin-right: 5px;
+  }
+  i:only-child {
+    margin-right: 0;
+  }
+  &.cc-highlight {
+    color: #3498DB;
+  }
+}
+
+.cc-toolbar.cc-flat .cc-button,
+.cc-button.cc-menu-toggle {
+
+  color: #6F767E;
+  height: 50px;
+  line-height: 50px;
+  min-width: 50px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  &.cc-highlight {
+    color: #3498DB;
+  }
+}
+
+.cc-sidebar {
+  .cc-header, .cc-header .cc-button {
+    background-color: #313B3E;
+  }
+  .cc-footer .cc-button {
+    background-color: #364046;
+  }
+}
+
+.cc-panel-toggle {
+  background-color: #fff;
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  line-height: 45px;
+  left: 50%;
+  top: -25px;
+  margin-left: -25px;
+  position: absolute;
+  text-align: center;
+  width: 50px;
+  z-index: 100;
+  color: #000;
+  border-radius: 50%;
+  border: 1px solid #E3E5E8;
+}

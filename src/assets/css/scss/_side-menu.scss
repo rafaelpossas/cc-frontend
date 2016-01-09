@@ -1,0 +1,56 @@
+.cc-side-menu {
+  background-color: #2C3439;
+  left: 0;
+  position: absolute;
+  top: 50px;
+  width: 50px;
+  height: 100%;
+  z-index: 0;
+
+  .cc-menu-active & {
+    width: 200px;
+  }
+
+  .cc-menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        color: #fff;
+        display: block;
+        line-height: 50px;
+        overflow: hidden;
+        padding-left: 0;
+        padding-right: 20px;
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        i {
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+        }
+        i+span {
+          display: none;
+          body.cc-menu-active & {
+            display: inline;
+          }
+        }
+        &.cc-active {
+          background-color: #364046;
+          &:before {
+            background-color: red;
+            content: "";
+            display: block;
+            height: 50px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 5px;
+          }
+          cursor: default;
+        }
+      }
+  }
+}

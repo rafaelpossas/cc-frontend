@@ -1,0 +1,267 @@
+
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,
+.noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-target {
+  position: relative;
+  direction: ltr;
+  width: 100%;
+}
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1; /* Fix 401 */
+}
+.noUi-origin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: -34px;
+  padding-left: 17px;
+}
+.noUi-handle {
+  position: relative;
+  left: -1px;
+  z-index: 1;
+}
+.noUi-stacking .noUi-handle {
+  /* This class is applied to the lower origin when
+     its values is > 50%. */
+  z-index: 10;
+}
+.noUi-state-tap .noUi-origin {
+  transition: left 0.3s, top 0.3s;
+}
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base {
+  transform: translate3d(0,0,0);
+}
+
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 1px;
+  padding-right: 34px;
+}
+.noUi-horizontal .noUi-handle {
+  background: #fcfcfc;
+  background: linear-gradient(to bottom, #fcfcfc, #ededed);
+  border: solid #dbdbdb 1px;
+
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  left: -17px;
+  top: -17px;
+  text-align: center;
+  &:before {
+    @include pseudo;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: #656D78;
+    top: 50%;
+    left: 50%;
+    margin-left: -6px;
+    margin-top: -6px;
+  }
+  &.noUi-active {
+    &:before {
+      background-color: #3399FF;
+    }
+  }
+}
+.noUi-vertical {
+  width: 18px;
+}
+.noUi-vertical .noUi-handle {
+  width: 28px;
+  height: 34px;
+  left: -6px;
+  top: -17px;
+}
+
+/* Styling;
+ */
+.noUi-background {
+  background: #dbdbdb;
+
+}
+
+
+.noUi-target {
+  background: #dbdbdb;
+
+}
+
+.noUi-connect {
+
+  background: #656D78;
+}
+
+
+/* Handles and cursors;
+ */
+.noUi-draggable {
+  cursor: w-resize;
+}
+.noUi-vertical .noUi-draggable {
+  cursor: n-resize;
+}
+.noUi-handle {
+  background: #FFF;
+  cursor: default;
+}
+
+
+
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+[disabled].noUi-origin,
+[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+
+/* Base;
+ *
+ */
+.noUi-pips,
+.noUi-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-pips {
+  position: absolute;
+  color: #999;
+}
+
+/* Values;
+ *
+ */
+.noUi-value {
+  width: 40px;
+  position: absolute;
+  text-align: center;
+}
+.noUi-value-sub {
+  color: #ccc;
+  font-size: 10px;
+}
+
+/* Markings;
+ *
+ */
+.noUi-marker {
+  position: absolute;
+  background: #CCC;
+}
+.noUi-marker-sub {
+  background: #AAA;
+}
+.noUi-marker-large {
+  background: #AAA;
+}
+
+/* Horizontal layout;
+ *
+ */
+.noUi-pips-horizontal {
+  padding: 10px 0;
+  height: 50px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.noUi-value-horizontal {
+  margin-left: -20px;
+  padding-top: 20px;
+}
+.noUi-value-horizontal.noUi-value-sub {
+  padding-top: 15px;
+}
+
+.noUi-marker-horizontal.noUi-marker {
+  margin-left: -1px;
+  width: 2px;
+  height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+  height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 15px;
+}
+
+/* Vertical layout;
+ *
+ */
+.noUi-pips-vertical {
+  padding: 0 10px;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+.noUi-value-vertical {
+  width: 15px;
+  margin-left: 20px;
+  margin-top: -5px;
+}
+
+.noUi-marker-vertical.noUi-marker {
+  width: 5px;
+  height: 2px;
+  margin-top: -1px;
+}
+.noUi-marker-vertical.noUi-marker-sub {
+  width: 10px;
+}
+.noUi-marker-vertical.noUi-marker-large {
+  width: 15px;
+}
+.noUi-tooltip {
+  display: block;
+  position: absolute;
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  background: #fff;
+  padding: 5px;
+  text-align: center;
+}
+
+.noUi-horizontal .noUi-handle-lower .noUi-tooltip {
+  top: -32px;
+}
+.noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+  bottom: -32px;
+}
+.noUi-vertical .noUi-handle-lower .noUi-tooltip {
+  left: 120%;
+}
+.noUi-vertical .noUi-handle-upper .noUi-tooltip {
+  right: 120%;
+}

@@ -1,0 +1,24 @@
+.cc-table {
+  @include clearfix;
+  table-layout: fixed;
+  width: 100%;
+  th, td {
+    line-height: 34px;
+    padding: 8px;
+    text-align: left;
+    &.cc-icon {
+      text-align: center;
+      width: 50px;
+    }
+  }
+  th {
+    background-color: #E5E9ED;
+    border-left: 1px solid #fff;
+    &:first-child {
+      border-left: none;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: #F7F8F9;
+  }
+}

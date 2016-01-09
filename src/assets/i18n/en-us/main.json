@@ -1,0 +1,222 @@
+{
+  "product_title": "Customer Compass",
+  "landing_page":{
+    "welcome_text": "Welcome to",
+    "headline_text": "Please select from recent queries below, or alternatively create a new one.",
+    "shortcuts":{
+      "title": "Shortcuts",
+      "workspace": "New Query",
+      "users": "Manage Users & Groups",
+      "metadata": "Metadata Manager"
+    },
+    "workspace":{
+      "title": "My Queries",
+      "name": "Name",
+      "created": "Created By",
+      "modified": "Last Modified"
+    },
+    "activity":{
+      "title": "Latest Activity",
+      "saved": "Saved",
+      "created": "Created"
+    },
+    "support":{
+      "title": "Customer Compass Support",
+      "desc": "Find help for all of Customer Compass's components here.",
+      "links": "Links",
+      "guide": "Customer Compass Guide",
+      "faq": "Frequently Asked Questions",
+      "contact": "Contact Us"
+    }
+  },
+  
+  "journey_explorer":{
+    "title": "Journey Explorer",
+    "topbar":{
+      "buttons":{
+        "save": "Save Query",
+        "saving": "Saving...",
+        "library": "Query Library"
+      }
+    },
+    "vqb":{
+      "description": "Enter a description for this query...",
+      "tags": "Add a tag",
+      "match_overlap": "Match Overlap",
+      "journey_key": "Journey Key",
+      "journey_key_attribute": "Attribute",
+      "summary_pill":{
+        "journeys": "Journeys",
+        "matches": "Matches"
+      }
+    },
+    "events":{
+      "title": "All Events"
+    },
+    "visualisation_tabs":{
+      "title": "Visualizations",
+      "add_button": "Add new visualization",
+      "errors":{
+        "maximum": "You have reached the maximum number of tabs allowed. Please think about closing some if you would like to add more."
+      },
+      "menu":{
+        "edit": "Edit",
+        "rename": "Rename Report",
+        "delete": "Delete",
+        "csv": "Export CSV",
+        "png": "Export PNG",
+        "dql": "View DQL Code",
+        "move": "Move to"
+      }
+    },
+    "defaults":{
+      "new_tab": "Visualization Tab",
+      "new_report": "Unnamed Report",
+      "tab_close_confirm": "Are you sure you wish to close this visualization tab? All visualizations on the tab will be deleted!"
+    }
+  },
+  
+  "workspace_manager": {
+      "title": "Query Manager",
+      "search": "Enter Query name or tag",
+      "table":{
+          "name": "Name",
+          "description": "Description",
+          "tags": "Tags",
+          "created": "Created By",
+          "modified": "Modified By"
+      },
+      "recent":{
+        "title": "Recently Used",
+        "by": "by",
+        "modified": "Modified"
+      },
+      "defaults":{
+        "no_results": "No Results found",
+        "no_tags": "No Tags"
+      }
+  },
+  
+  "widget_designer":{
+    "title": "Visualization Settings",
+    "sections":{
+      "visualisation": "Visualization",
+      "colour": "Color",
+      "text": "Text",
+      "size": "Size",
+      "rows": "Rows",
+      "columns": "Columns",
+      "swap": "Swap"
+    },
+    "actions":{
+      "select": "Select",
+      "add": "Add",
+      "save": "Save & Close",
+      "clear": "Clear All Fields",
+      "delete": "Delete Visualization",
+      "generate": "Generate Widget Spec"
+    }
+  },
+  
+  "metadata_manager":{
+    "title": "Metadata Manager",
+    "sidebar": {
+      "event_types": "Event Types",
+      "customer_data": "Customer Data"
+    },
+    "pane":{
+      "selection_prefix": "Please Select an",
+      "selection_subject": "Event Type"
+    },
+    "tabs":{
+      "general": "General",
+      "attributes": "Attributes",
+      "ancillary": "Ancillary",
+      "other": "Other"
+    },
+    "ancillary":{
+      "last_updated": "LAST UPDATED",
+      "first_processed": "FIRST PROCESSED ON",
+      "next_scheduled_update": "NEXT SCHEDULED UPDATE",
+      "data_source_origin": "DATA SOURCE ORIGIN",
+      "owner_name": "OWNER NAME",
+      "owner_email": "OWNER EMAIL",
+      "data_quality_rating": "DATA QUALITY RATING"
+    },
+    "attributes": {
+      "name": "NAME",
+      "summary": "SUMMARY",
+      "data_type": "DATA TYPE",
+      "data_class": "DATA CLASS",
+      "active": "ACTIVE",
+      "wiki": "WIKI",
+      "domain_values": {
+        "title": "Domain Values",
+        "keys": "KEYS",
+        "description": "DESCRIPTION",
+        "no_values": "No Domain Values Specified"
+      }
+    },
+    "data_types":{
+      "int8": "Number",
+      "varchar": "String",
+      "date": "Date",
+      "timestamp": "Date and Time"
+    },
+    "general": {
+      "event_type_code": "EVENT TYPE CODE",
+      "object_value": "OBJECT VALUE",
+      "event_friendly_name": "EVENT FRIENDLY NAME",
+      "description": "DESCRIPTION",
+      "wiki": {
+        "title": "WIKI",
+        "placeholder": "Enter WIKI information here"
+      },
+      "active": "ACTIVE"
+    },
+    "other": {
+      "keys": "KEYS",
+      "value": "VALUE",
+      "add_new_key": "Add new Key"
+    },
+    "common":{
+      "add": "Add",
+      "save": "Save",
+      "saving": "Saving",
+      "created_by": "Created By",
+      "last_modified_by": "Last Modified By"
+    }
+  },
+  
+  "general":{
+    "loading": "Loading...",
+    "error": "Error"
+  },
+    
+  "navigation":{
+    "app":{
+      "landingPage": "Dashboard",
+      "journeyExplorer": "Journey Explorer",
+      "metadataManagement": "Metadata Manager",
+      "workspaceManager": "Query Manager",
+      "userGroupManager": "User Management"
+    }
+  },
+  
+  "internationalisation":{
+    "en-us":{
+      "code": "US",
+      "lang": "English"
+    },
+    "en-au":{
+      "code": "AUS",
+      "lang": "English"
+    },
+    "zh-tw":{
+      "code": "TW",
+      "lang": "Chinese"
+    }
+  }
+  
+  
+}

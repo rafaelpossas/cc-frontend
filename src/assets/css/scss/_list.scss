@@ -1,0 +1,106 @@
+$level-count: 20;
+$list-indent-initial: 15px;
+$list-indent-step: 15px;
+$tree-indent-initial: 30px;
+$tree-indent-step: 15px;
+
+@mixin depth($depth) {
+  $chain: '';
+  @for $i from 0 to $depth {
+    $chain: $chain + ' > ul > li';
+  }
+  & #{$chain + " > span"} {
+    @content;
+  }
+}
+.cc-list {
+  @include clearfix;
+  @include clearbox;
+  li {
+    cursor: pointer;
+    line-height: $control-container-size;
+    &.cc-active {
+      cursor: default;
+    }
+    > span {
+      @include longtext;
+      display: block;
+      line-height: $control-container-size;
+      margin-left: $list-indent-initial;
+      position: relative;
+      i {
+        margin-right: 5px;
+      }
+    }
+
+    @for $i from 1 through $level-count {
+      @include depth($i) {
+        margin-left: $list-indent-initial + ($i*$list-indent-step);
+      }
+    }
+  }
+  &.cc-tree {
+    li {
+      > span {
+        margin-left: $tree-indent-initial;
+        overflow: visible;
+        &:before {
+          @include pseudo;
+          font-family: 'FontAwesome';
+          height: 100%;
+          left: -30px;
+          padding-left: 15px;
+          text-align: left;
+          top: 0;
+          width: 30px;
+        }
+      }
+      &.cc-colapsed {
+        > span:before {
+          content: "\f105";
+        }
+      }
+      &.cc-expanded {
+        > span:before {
+          content: "\f107";
+        }
+      }
+      @for $j from 1 through $level-count {
+        @include depth($j) {
+          margin-left: $tree-indent-initial + ($j*$tree-indent-step);
+        }
+      }
+    }
+  }
+  ul {
+    @include clearbox;
+  }
+  .cc-sidebar & {
+    color: white;
+    li {
+      background-color: #2C3439;
+      &.cc-active {
+        background-color: #3E484D;
+        &:before {
+          background-color: #5DD255;
+          height: $control-container-size;
+          left: 0;
+          top: 0;
+          width: 5px;
+        }
+      }
+    }
+  }
+  .cc-workflow-options & {
+    color: #62717a;
+    li {
+      background-color: white;
+      &.cc-active {
+        background-color: #F1F4F9;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
