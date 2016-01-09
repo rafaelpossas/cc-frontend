@@ -59,15 +59,14 @@ gulp.task('inject',['wiredep','styles','templatecache'],function() {
 gulp.task('optimize',['inject'],function() {
     log('Optimizing the javascript, css, html');
     var templateCache = config.temp + config.templateCache.file;
-    var assets = $.useref.assets({searchPath:'./src/app/'});
+    var assets = $.useref({searchPath:'./src'});
     return gulp
         .src(config.index)
         .pipe($.plumber())
-        .pipe($.inject(gulp.src(templateCache,{read:false}),{
-            starttag: '<!-- inject:templates:js -->'
-        }))
+        //.pipe($.inject(gulp.src(templateCache,{read:false}),{
+        //    starttag: '<!-- inject:templates:js -->'
+        //}))
         .pipe(assets)
-        .pipe(assets.restore())
         .pipe(gulp.dest(config.build));
 });
 gulp.task('clean-build',function() {
@@ -79,7 +78,7 @@ gulp.task('templatecache',['clean-build'],function() {
 
     return gulp
         .src(config.htmltemplates)
-        .pipe($.minifyHtml({empty:true}))
+        .pipe($.htmlmin({empty:true}))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
             config.templateCache.options))
