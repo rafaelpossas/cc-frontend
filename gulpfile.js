@@ -23,31 +23,37 @@ gulp.task('vet',function() {
         .pipe($.jshint.reporter('jshint-stylish',{verbose:true}))
         .pipe($.jshint.reporter('fail'));
 });
-gulp.task('build-copy-fonts',function() {
+gulp.task('build-clean-fonts',function() {
+    log('Cleaning the font files');
+    return clean(config.build + 'assets/fonts');
+});
+gulp.task('build-copy-fonts',['build-clean-fonts'],function() {
     log('Copying Fonts');
     return gulp
         .src(config.fonts + '/**/*.*')
         .pipe(gulp.dest(config.build + 'assets/fonts'));
 
 });
-gulp.task('build-copy-images',function() {
+gulp.task('build-clean-images',function() {
+    log('Cleaning the image files');
+    return clean(config.build + 'assets/img/');
+});
+gulp.task('build-copy-images',['build-clean-images'],function() {
     log('Compressing and Copying the images');
     return gulp
         .src(config.images + '/**/*.*')
         .pipe($.imagemin({optimizationLevel: 4}))
-        .pipe(gulp.dest(config.build + 'assets/images'));
+        .pipe(gulp.dest(config.build + '/assets/img'));
 });
-gulp.task('build-copy-i18n',function() {
+gulp.task('build-clean-i18n',function() {
+    log('Cleaning the internationalisation files (i18n)');
+    return clean(config.build + 'assets/i18n');
+});
+gulp.task('build-copy-i18n',['build-clean-i18n'],function() {
     log('Copying the internationalisation files (i18n)');
     return gulp
         .src(config.i18n + '/**/*.*')
         .pipe(gulp.dest(config.build + 'assets/i18n'));
-});
-gulp.task('build-copy-css',function() {
-    log('Copying css');
-    return gulp
-        .src(config.css + '/app.css')
-        .pipe(gulp.dest(config.build + 'assets/css'));
 });
 gulp.task('inject',['wiredep','styles','templatecache'],function() {
     log('Wire up the app css into the html, and call wiredep');
@@ -55,25 +61,30 @@ gulp.task('inject',['wiredep','styles','templatecache'],function() {
         .src(config.index)
         .pipe($.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.client));
-})
+});
 gulp.task('optimize',['inject'],function() {
     log('Optimizing the javascript, css, html');
     var templateCache = config.temp + config.templateCache.file;
-    var assets = $.useref({searchPath:'./src'});
+    var assets = $.useref({searchPath:['./','./src']});
+    var cssFilter = $.filter('**/*.css',{restore: true});
+    var jsFilter = $.filter('**/*.js',{restore: true});
     return gulp
         .src(config.index)
         .pipe($.plumber())
-        //.pipe($.inject(gulp.src(templateCache,{read:false}),{
-        //    starttag: '<!-- inject:templates:js -->'
-        //}))
+        .pipe($.inject(gulp.src(templateCache,{read:false}),{
+            starttag: '<!-- inject:templates:js -->'
+        }))
         .pipe(assets)
+        .pipe(cssFilter)
+        .pipe($.csso())
+        .pipe(cssFilter.restore)
+        .pipe(jsFilter)
+        .pipe($.uglify())
+        .pipe(jsFilter.restore)
         .pipe(gulp.dest(config.build));
 });
-gulp.task('clean-build',function() {
-    return clean(config.build,{read:false});
-});
 
-gulp.task('templatecache',['clean-build'],function() {
+gulp.task('templatecache',function() {
     log('Creating AngularJS $templateCache');
 
     return gulp
@@ -123,8 +134,15 @@ gulp.task('wiredep:karma',function() {
         .pipe(wiredep(options))
         .pipe(gulp.dest('./'));
 });
+gulp.task('serve-build',['vet','optimize',
+    'build-copy-images','build-copy-i18n','build-copy-fonts'], function() {
+    serve(false);
+});
 gulp.task('serve-dev',['styles','wiredep'],function() {
-    var isDev = true;
+    serve(true);
+});
+//////////////////
+function serve(isDev) {
     var nodeOptions = {
         script: config.nodeServer,
         delayTime: 1,
@@ -146,7 +164,7 @@ gulp.task('serve-dev',['styles','wiredep'],function() {
         })
         .on('start',function() {
             log('*** nodemon started');
-            startBrowserSync();
+            startBrowserSync(isDev);
         })
         .on('crash',function() {
             log('*** nodemon crashed');
@@ -155,24 +173,41 @@ gulp.task('serve-dev',['styles','wiredep'],function() {
             log('*** nodemon exited cleanly');
         });
 
-});
-//////////////////
+}
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
     log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
-function startBrowserSync() {
+function startBrowserSync(isDev) {
     if (args.nosync || browserSync.active) {
         log('Browser is active!');
         return;
     }else {
         log('Starting browser-sync on port ' + port);
+        if (isDev) {
+            gulp
+                .watch([config.sass + '/**/*.scss'],['styles'])
+                .on('change',function(event) {
+                    changeEvent(event);
+                });
+            gulp
+                .watch([config.js])
+                .on('change',function(event) {
+                    browserSync.notify('reloading now...');
+                    browserSync.reload({stream:false});
+                    changeEvent(event);
+                });
+        }else {
+            gulp
+                .watch([config.sass + '/**/*.scss',config.js,config.html],[
+                    'optimize',
+                    browserSync.reload
+                ])
+                .on('change',function(event) {
+                    changeEvent(event);
+                });
+        }
 
-        gulp
-            .watch([config.sass + '/**/*.scss'],['styles'])
-            .on('change',function(event) {
-                changeEvent(event);
-            });
         var options = {
             proxy: 'localhost:' + port,
             port: 3000,

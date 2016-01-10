@@ -1,4 +1,4 @@
-xdescribe('Authentication',function() {
+describe('Authentication',function() {
 
 
     var $httpBackend;

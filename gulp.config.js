@@ -1,6 +1,6 @@
 module.exports = function() {
     var client = './src';
-    var clientApp = client + '/app/'
+    var clientApp = client + '/app/';
     var server = './server/';
     var config = {
         /**
@@ -18,6 +18,9 @@ module.exports = function() {
         htmltemplates: clientApp + '**/*.html',
         images: client + '/assets/img',
         i18n: client + '/assets/i18n',
+        html:[
+            client + '/**/*.html',
+        ],
         index: client + '/index.html',
         js:[
             '!' + client + '/assets/js/**/*.js',

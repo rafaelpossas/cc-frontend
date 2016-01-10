@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" ng-strict-di class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" ng-strict-di class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- build:css assets/css/lib.css -->
   <!-- bower:css -->
   <link rel="stylesheet" href="assets/js/bootstrap-css/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/js/toastr/toastr.css" />
   <!-- endbower -->
   <link rel="stylesheet" href="assets/js/font-awesome/css/font-awesome.min.css">
+  <!-- endbuild -->
+  <!-- build:css assets/css/app.css -->
   <link rel="stylesheet" href="assets/css/app.css">
-
+  <!-- endbuild -->
 
 </head>
 <body>
@@ -29,6 +32,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <!-- build:js js/lib.js -->
   <!-- bower:js -->
   <script src="assets/js/angular/angular.js"></script>
   <script src="assets/js/angular-ui-router/release/angular-ui-router.js"></script>
@@ -41,32 +45,32 @@
   <script src="assets/js/toastr/toastr.js"></script>
   <script src="assets/js/moment/moment.js"></script>
   <!-- endbower -->
-
+  <!-- endbuild -->
   <!-- build:js js/app.js -->
   <!-- inject:js -->
   <script src="app/app.module.js"></script>
   <script src="app/authentication/authentication.module.js"></script>
-  <script src="app/core/core.module.js"></script>
   <script src="app/layout/layout.module.js"></script>
+  <script src="app/core/core.module.js"></script>
   <script src="app/widgets/widgets.module.js"></script>
-  <script src="app/blocks/exception/exception.module.js"></script>
   <script src="app/blocks/logger/logger.module.js"></script>
+  <script src="app/blocks/exception/exception.module.js"></script>
   <script src="app/blocks/router/router.module.js"></script>
   <script src="app/app.js"></script>
   <script src="app/authentication/authentication.repository.js"></script>
   <script src="app/authentication/config.route.js"></script>
   <script src="app/authentication/login.js"></script>
+  <script src="app/layout/config.route.js"></script>
+  <script src="app/layout/dashboard.js"></script>
   <script src="app/core/common.js"></script>
   <script src="app/core/config.js"></script>
   <script src="app/core/constants.js"></script>
   <script src="app/core/endpoint.js"></script>
   <script src="app/core/permissions.js"></script>
   <script src="app/core/user-data.js"></script>
-  <script src="app/layout/config.route.js"></script>
-  <script src="app/layout/dashboard.js"></script>
+  <script src="app/blocks/logger/logger.js"></script>
   <script src="app/blocks/exception/exception-handler.provider.js"></script>
   <script src="app/blocks/exception/exception.js"></script>
-  <script src="app/blocks/logger/logger.js"></script>
   <script src="app/blocks/router/routehelper.js"></script>
   <!-- endinject -->
 
@@ -74,6 +78,7 @@
   <!-- endinject -->
 
   <!-- endbuild -->
+
 
 
 </body>
